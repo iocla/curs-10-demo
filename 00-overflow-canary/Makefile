@@ -1,0 +1,20 @@
+
+FILES = overflow_example.c auth_overflow.c
+CFLAGS_CANARY = -m32 	
+CFLAGS_NOCANARY = -m32 -fno-stack-protector 
+
+all : overflow_example canary nocanary
+
+canary: auth_overflow.c
+
+	gcc $(CFLAGS_CANARY) -S -masm=intel -o canary.s $<
+	gcc $(CFLAGS_CANARY) -o canary $<
+
+nocanary: auth_overflow.c
+	gcc $(CFLAGS_NOCANARY) -S -masm=intel -o nocanary.s $< 
+	gcc $(CFLAGS_NOCANARY) -o nocanary $<
+
+
+clean: 
+	rm -f  *.s  canary nocanary overflow_example 
+	rm -f *~
