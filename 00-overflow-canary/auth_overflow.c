@@ -21,6 +21,7 @@ gcc  -m32  -g -Fdwarf  -fno-stack-protector -o nocanary auth_overflow.c
 opțiunea -fno-stack-protector dezactivează canarul 
 
 se compară canary.s cu nocanary.s pentru a vedea implementarea canarului 
+se compară canary.lst cu nocanary.lst pentru a vedea implementarea canarului 
 se rulează canary și nocanary cu parole sub și peste 17 caactere 
 
 */

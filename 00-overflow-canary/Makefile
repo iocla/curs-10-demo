@@ -8,10 +8,12 @@ all : overflow_example canary nocanary
 canary: auth_overflow.c
 
 	gcc $(CFLAGS_CANARY) -S -masm=intel -o canary.s $<
+	gcc $(CFLAGS_CANARY) -masm=intel -Wa,-adhln $< > canary.lst
 	gcc $(CFLAGS_CANARY) -o canary $<
 
 nocanary: auth_overflow.c
 	gcc $(CFLAGS_NOCANARY) -S -masm=intel -o nocanary.s $< 
+	gcc $(CFLAGS_NOCANARY) -masm=intel -Wa,-adhln $< > nocanary.lst
 	gcc $(CFLAGS_NOCANARY) -o nocanary $<
 
 overflow_example: overflow_example.c
@@ -19,5 +21,5 @@ overflow_example: overflow_example.c
 
 
 clean: 
-	rm -f  *.s  canary nocanary overflow_example 
+	rm -f  *.s *.lst canary nocanary overflow_example 
 	rm -f *~
