@@ -14,6 +14,7 @@ static void disclosure_target(unsigned int a, unsigned int b)
 
 int main(void)
 {
+  /* practically a textbook drawing of the stack */ 
 	disclosure_target(0xaabbccdd, 0x55667788);
 	return 0;
 }
