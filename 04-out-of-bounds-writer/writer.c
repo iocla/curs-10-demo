@@ -75,5 +75,5 @@ static void disclosure_target(unsigned int a, unsigned int b)
 int main(void)
 {
 	disclosure_target(0xaabbccdd, 0x55667788);
-	return 0;
+	return 1;
 }
