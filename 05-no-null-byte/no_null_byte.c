@@ -16,6 +16,13 @@ static void see_beyond(const char *s)
 	printf("buffer is #%s#\n", buffer);
 }
 
+/* 
+   - What are the consequences of accepting any strings? 
+   - What are the consequences of returning/printing unchecked buffers? 
+ 
+   ./no_null_byte $(python -c 'print 32*"A"+"\x00"')| hexdump -C
+
+ */
 int main(int argc, char **argv)
 {
 	if (argc != 2) {
