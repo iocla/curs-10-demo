@@ -10,7 +10,7 @@ gcc  -m32  -g -Fdwarf  -fno-stack-protector -o nocanary auth_overflow.c
 1. MODIFICARE BINAR nocanary
 - cp nocanary nocanary.orig
 - se caută adresa funcției check_authentication cu nm ./a.out => 0x4DD
-- in biew se identifica in funcție zona critica a testului (la 0x52F)
+- in radare/biew se identifica in funcție zona critica a testului (la 0x52F)
 - se suprascrie cu NOP-uri (0x90) pentru a returna mereu 1
 - Victorie: binarul obținut acceptă orice parolă! 
 

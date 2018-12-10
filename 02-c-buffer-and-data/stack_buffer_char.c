@@ -2,6 +2,11 @@
 
 int main(void)
 {
+  /* 
+     compiler allocates these variables on the stack 
+     in the declared order: 4 bytes for length, 4 bytes 
+     for type, 9 bytes for buf...
+  */
 	unsigned int length = 22;
 	unsigned int type = 11;
 	unsigned char buf[9];
@@ -16,5 +21,7 @@ int main(void)
 	buf[10] = 55; buf[13] = 66;
 	printf("type: %u, length: %u\n", type, length);
 
+	printf("length: %p, type: %p , buf: %p, i: %p\n", &length, &type, &buf, &i);
+		
 	return 0;
 }
