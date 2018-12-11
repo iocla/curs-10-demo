@@ -35,6 +35,14 @@ void secret_function(unsigned int a, unsigned int b)
 	exit(EXIT_SUCCESS);
 }
 
+void stealth_function(unsigned int a, unsigned int b)
+{
+  if (a != 0x42424242 || b != 0x6a6a6a6a){
+    exit(2);
+  }
+  printf("called stealth function\n");
+}
+
 static void disclosure_target(unsigned int a, unsigned int b)
 {
 	size_t i;
@@ -75,5 +83,6 @@ static void disclosure_target(unsigned int a, unsigned int b)
 int main(void)
 {
 	disclosure_target(0xaabbccdd, 0x55667788);
+	printf("exit to shell\n");
 	return 1;
 }
